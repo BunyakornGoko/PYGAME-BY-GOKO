@@ -18,14 +18,10 @@
 import os
 os.system('cls')
 
-scoreplayer1 = 0
-scoreplayer2 = 0
-scoreplayer3 = 0
-scoreplayer4 = 0
-scoreplayer5 = 0
+score_Player = [0,0,0,0,0]
 
 # ! Loop ทั้งเกม (จะมีทั้งหมด 10 รอบ)
-for i in range(3):
+for i in range(2):
     while True:
 
         my_list = []
@@ -70,40 +66,21 @@ for i in range(3):
     print("Average :",average,"\nGame :(Average * 0.8) = ",game)
     print("Winner is Player",winner)
 
-    if winner == 1:
-        scoreplayer2 -=1
-        scoreplayer3 -=1
-        scoreplayer4 -=1
-        scoreplayer5 -=1
-    elif winner == 2:
-        scoreplayer1 -=1
-        scoreplayer3 -=1
-        scoreplayer4 -=1
-        scoreplayer5 -=1
-    elif winner == 3:
-        scoreplayer1 -=1
-        scoreplayer2 -=1
-        scoreplayer4 -=1
-        scoreplayer5 -=1
-    elif winner == 4:
-        scoreplayer1 -=1
-        scoreplayer2 -=1
-        scoreplayer3 -=1
-        scoreplayer5 -=1
-    elif winner == 5:
-        scoreplayer1 -=1
-        scoreplayer2 -=1
-        scoreplayer3 -=1
-        scoreplayer4 -=1
+    for i in range(5):
+        if i == (winner - 1):
+            continue
+        score_Player[i] -= 1
+
+        
 
     print("---------------------------------")
-    print("Score Player1 :" , scoreplayer1)
-    print("Score Player2 :" , scoreplayer2)
-    print("Score Player3 :" , scoreplayer3)
-    print("Score Player4 :" , scoreplayer4)
-    print("Score Player5 :" , scoreplayer5)
+    for i in range(5):
+        print("Score Player%d : %d" % (i+1,score_Player[i]))
     print("---------------------------------")
 
-winner_Chicken = min(winner)
-print("Player ",winner," winner winner chicken dinner")
+final_winner = score_Player.index(max(score_Player)) + 1
+print("Player " , final_winner ," winner winner chicken dinner")
+
+
+
 
